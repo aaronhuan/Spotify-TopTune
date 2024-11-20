@@ -1,5 +1,9 @@
 '''
 in terminal
+tutorial-env\Scripts\activate
+
+$env:FLASK_APP = "main.py"
+
 $env:SPOTIPY_CLIENT_ID="e58f127ad4a0477bb887ebd3fbec37e3"
 $env:SPOTIPY_CLIENT_SECRET="76fdc0cb18e84cd2b69905d9544bd431"
 $env:SPOTIPY_REDIRECT_URI="http://localhost:3000"
@@ -19,17 +23,65 @@ name playlist = empty
 name description = empty
 
 '''
+from flask import Flask, request, url_for, session, redirect
 import spotipy 
 from spotipy.oauth2 import SpotifyOAuth
-
+import time 
 #https://developer.spotify.com/documentation/web-api/concepts/scopes
 scopes_used = "user-library-read playlist-modify-public playlist-modify-private user-top-read user-read-recently-played"
 #scopes for reading, modify playlists
 
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id ="e58f127ad4a0477bb887ebd3fbec37e3",
+app =Flask(__name__) #creates the flask application
+app.secret_key= "hbadkjsJHBHJKB#QLSDSAD"  #the cookie 
+app.config["SESSION_COOKIE_NAME"]= "aarons Cookie" #stores the user's session
+TOKEN_INFO = "token_info"
+
+@app.route("/") #routes but also referred to as endpoints 
+def login(): #automatically log u into spotify (good if you just want data and not interactive site)
+    sp_Oauth = create_spotifyOuth()
+    auth_url = sp_Oauth.get_authorize_url()
+    return redirect(auth_url)
+
+@app.route("/redirect")
+def redirectPage():
+    sp_Oauth = create_spotifyOuth()
+    session.clear()
+    code= request.args.get('code')
+    token_info=sp_Oauth.get_access_token(code)
+    session[TOKEN_INFO]= token_info #save the token information in the session
+    return redirect(url_for('getTracks', _external = True))
+
+@app.route("/getTracks")
+def getTracks():
+    try: 
+        token_info = get_token()
+    except: 
+        print("user not logged in")
+        redirect(url_for("login", _external= False)) #return user to login page
+    sp=spotipy.Spotify(auth=token_info['access_token'])
+    return str(sp.current_user_saved_tracks(limit=50, offset=0)['items'][0])
+
+def get_token(): #to refresh token and check if theres even a token
+    token_info = session.get(TOKEN_INFO, None)
+    if not token_info: # if is None
+        raise "exception "
+    now = int(time.time())
+    is_expired = token_info['expires_at'] - now < 60
+    if is_expired:
+        sp_Oauth= create_spotifyOuth
+        token_info = sp_Oauth.refresh_access_token(token_info['refresh_token'])
+    
+    return token_info
+def create_spotifyOuth() : #everytime use object use a new one
+    return SpotifyOAuth(client_id ="e58f127ad4a0477bb887ebd3fbec37e3",
                                                 client_secret="76fdc0cb18e84cd2b69905d9544bd431",
-                                                redirect_uri="http://localhost:3000",
-                                                scope=scopes_used))
+                                                redirect_uri=url_for("redirectPage", _external=True), #url_for is a good way to not hardcode the path _external=True will create an absolute path
+                                                scope=scopes_used)
+
+
+
+'''
+
 
 user= sp.current_user()
 userID =user["id"]
@@ -85,3 +137,5 @@ sp.user_playlist_add_tracks(user=userID, playlist_id=playlist_id, tracks=rec_tra
 #search(q, limit=10, offset=0, type='track', market=None)            search 
 #user_playlist_add_tracks(user, playlist_id, tracks, position=None)    add track to playlist
 #user_playlist_remove_specific_occurrences_of_tracks(user, playlist_id, tracks, snapshot_id=None) remove tracks (possible for duplicates)
+
+'''
