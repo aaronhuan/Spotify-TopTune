@@ -3,7 +3,8 @@
 {% block body %}
 hello
 <ul>
-    <li>Home </li>
+    <li><a href="{{ url_for ('index') }}">Home </a></li>
+    <li> <a href= "{{url_for ('login')}}">Login </a></li>
     <li>Top 10 songs</li>
     <li>Top 10 artists</li>
     <li>discover <s>weekly</s> now</li>
