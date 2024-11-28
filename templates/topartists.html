@@ -1,5 +1,12 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<h1>suprise! you're top artists are:</h1>
 
+    
+    <ol>
+        {% for topartist in top_artists_names%}
+        <li> {{topartist}}</li>
+        {% endfor %}
+    </ol>
 {% endblock %}
