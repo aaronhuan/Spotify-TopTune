@@ -3,7 +3,10 @@
     <h1>here's you're top 10 tracks!</h1>
     <ol>
         {%for song in range(0,10) %}
-        <li>{{song_list[song]}} <img src = "{{image_list[song]}}" alt = "album image"> </li>
+        {% set min,sec =length[song] %}  
+        <li>{{song_list[song]}} 0:00 - {{min}}:{{sec}}
+                        
+            <img src = "{{image_list[song]}}" alt = "album image"></li>
         {% endfor %}
     </ol>
 {% endblock %}

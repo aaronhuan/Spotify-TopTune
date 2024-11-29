@@ -3,6 +3,7 @@
 {% block body %}
 hello
 <ul>
+    <li><a href = "{{url_for ('testing')}}"> test </a> </li>
     <li><a href="{{ url_for ('index') }}">Home </a></li>   <!--generated based on routes name-->
     <li> <a href= "{{url_for ('login')}}">Login </a></li> <!-- /login <- this is hard coded/static good for url that do not change  -->
     <li><a href= "{{url_for ('topTracks')}}"> Top 10 Tracks</a></li>
