@@ -3,10 +3,12 @@
 {% block body %}
 <h1>suprise! you're top artists are:</h1>
 
+    <div class = "list-container">
+        <ol>
+            {% for artists in range(0,10) %}
+            <li>  {{names[artists]}} <img src = "{{pictures[artists]}}" alt = "picture of {{names[artists]}}"> </li>
+            {% endfor %}
+        </ol>
+    </div>
     
-    <ol>
-        {% for artists in range(0,10) %}
-        <li> {{names[artists]}} <img src = "{{pictures[artists]}}" alt = "picture of {{names[artists]}}"> </li>
-        {% endfor %}
-    </ol>
 {% endblock %}
