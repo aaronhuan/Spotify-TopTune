@@ -2,12 +2,13 @@
 /* <uniquifier>: Use a unique and descriptive class name/
  <weight>: Use a value from 100 to 900 */
 
-.montserrat-regular {
+.montserrat-medium {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 400;
+  font-weight: 600;
   font-style: normal;
 }
+
 
 .list-container{
   display: flex;
@@ -24,7 +25,9 @@ header{
   display: flex;
   justify-content: space-around;
   align-items: self-start;
+  font-size: large;
 }
+
 .right-links > ul{
   display: flex;
   flex-direction: row;
