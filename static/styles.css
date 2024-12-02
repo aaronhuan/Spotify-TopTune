@@ -9,6 +9,15 @@
   font-style: normal;
 }
 
+a { 
+  text-decoration: none; /* Removes the underline */ 
+  color: inherit; /* Keeps the link color the same as the surrounding text */ 
+}
+
+ul{
+  list-style-type: none;
+}
+
 
 .list-container{
   display: flex;
@@ -17,15 +26,32 @@
   font-size: 20px;
 }
 
-ul{
-  list-style-type: none;
+body{
+    background-image: url("./homepageimg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0; 
+    padding: 0;
 }
 
 header{
   display: flex;
   justify-content: space-around;
-  align-items: self-start;
+  align-items:center;
   font-size: large;
+  background-color: black;
+  padding:0%;
+  margin:0%;
+}
+
+
+header > p > a {
+  font-weight: 900;
+  color: rgb(30, 215, 96);
+  padding:0;
+  margin: 0;
 }
 
 .right-links > ul{
@@ -34,6 +60,7 @@ header{
   gap: 9px;
   padding:0;
   margin: 0;
+  color: whitesmoke;
 }
 
 img{
