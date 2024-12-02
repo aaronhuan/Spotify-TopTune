@@ -16,6 +16,23 @@
   font-size: 20px;
 }
 
+ul{
+  list-style-type: none;
+}
+
+header{
+  display: flex;
+  justify-content: space-around;
+  align-items: self-start;
+}
+.right-links > ul{
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+  padding:0;
+  margin: 0;
+}
+
 img{
   width: 50px;
   height: 50px;

@@ -1,13 +1,27 @@
 {% extends "layout.html" %}
 
 {% block body %}
-hello
-<ul>
-    <li><a href = "{{url_for ('testing')}}"> test </a> </li>
-    <li><a href="{{ url_for ('index') }}">Home </a></li>   <!--generated based on routes name-->
-    <li> <a href= "{{url_for ('login')}}">Login </a></li> <!-- /login <- this is hard coded/static good for url that do not change  -->
-    <li><a href= "{{url_for ('topTracks')}}"> Top 10 Tracks</a></li>
-    <li><a href= "{{url_for ('topArtists')}}">Top 10 artists</a></li>
-    <li>discover <s>weekly</s> now</li>
-</ul>
+<header>
+    <a href = "{{url_for ('index')}}">Spotify RhythmHub</a>
+    
+    <div class = "right-links">
+        <ul>
+            <li><a href = "{{url_for ('testing')}}"> test </a> </li>
+            <li><a href= "{{url_for ('topTracks')}}"> Top 10 Tracks</a></li>
+            <li><a href= "{{url_for ('topArtists')}}">Top 10 artists</a></li>
+            <li>discover <s>weekly</s> now</li>
+        </ul>
+    </div>
+
+
+</header>
+
+<!-- header would be a banner like, with the name being a bit stronger and a different color than the other links
+the rest of the page would be an image as a background and login button  
+
+if they are not yet logged in and tried to click on a link than it would direct them to a page that tells them to log in first
+-->
+<a href= "{{url_for ('login')}}">Login </a> <!-- /login <- this is hard coded/static good for url that do not change  -->
+
+
 {% endblock %}
