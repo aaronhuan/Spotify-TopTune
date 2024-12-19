@@ -1,0 +1,11 @@
+@import url(main.css);
+
+body{
+    background-image: url("./homepage_photo.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0; 
+    padding: 0;
+}
