@@ -1,12 +1,20 @@
 {% extends "layout.html" %}
 
 {% block body%}
-<h1>get a reccomended playlist now!</h1>
-<ul>
-    <li> number of tracks</li>
-    <li> name of playlist</li>
-    <li> description</li> 
-    <li>image (optional)</li>
-</ul>
-{{testing}}
+<h1>Get a recommended playlist now!</h1>
+
+{% if message %}
+    <div class="success-message">{{ message }}</div>
+{% endif %}
+
+{% if error %}
+    <div class="error-message">{{ error }}</div>
+{% endif %}
+
+<form method = "post">
+    <label for="name">playlist name</label>
+    <input required name = "name" id ="name" type="text" placeholder="playlist!">
+    <button type = "submit">create</button>
+</form>
+
 {% endblock %}
