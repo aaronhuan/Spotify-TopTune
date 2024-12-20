@@ -6,8 +6,31 @@
     <p><a href = "{{url_for ('index')}}">Spotify RhythmHub</a></p> 
 </header>
 
-<body>
-    <a href= "{{url_for ('login')}}">Login </a> <!-- /login <- this is hard coded/static good for url that do not change  -->
+<main>
+    <div class="vertical_strip">
+        
+        <div class="in_vs">
+            <h1> Welcome!</h1>    
+        </div>
+       
+        <div class="in_vs">
+            <h2> Access services by logging in to Spotify </h2>
+        </div>
 
-</body>
+        <div class="in_vs">
+            <h2> <a href= "{{url_for ('login')}}">Login </a></h2> <!-- /login <- this is hard coded/static good for url that do not change  -->
+        </div>
+
+        <div class="in_vs">
+            <h3> This app will allow users to view top artists and tracks and obtain a reccomended playlist</h3>
+        </div>
+    
+    </div>
+   
+
+</main>
+
+<footer>
+
+</footer>
 {% endblock %}

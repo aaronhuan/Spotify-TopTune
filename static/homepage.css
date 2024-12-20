@@ -8,4 +8,29 @@ body{
     background-size: cover;
     margin: 0; 
     padding: 0;
+ 
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+.vertical_strip{
+    border-radius: 40px;
+    background-color: #FFECD1;
+    width: 800px;
+    height: 80vh;
+    padding: 10px;
+    box-sizing: border-box;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-self: center;
+    gap: 20px;
+}
+.in_vs{
+    text-align: center;
 }
