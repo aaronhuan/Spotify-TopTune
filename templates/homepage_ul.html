@@ -1,11 +1,13 @@
 {% extends "layout.html" %}
 {% block header %} <link rel="stylesheet" href="../static/homepage.css"/>  {% endblock%}
 
-{% block body %} 
+{% block bheader %}
 <header>
     <p><a href = "{{url_for ('index')}}">Spotify RhythmHub</a></p> 
 </header>
+{% endblock %}
 
+{% block body %} 
 <main>
     <div class="vertical_strip">
         
