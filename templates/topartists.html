@@ -6,8 +6,25 @@
     <h1>You're top artists are:</h1>    
 </header>
 
+<div class = "container">
+    {% set count=1 %}
+    {% for artists in range(0,10) %}
+    <div class = "row">
+        <div class = "col-1">
+            {{count}}
+        </div>
+        <div class="col-5">
+            <img src="{{pictures[artists]}}" alt = "picture of {{names[artists]}}">
+        </div>
+        <div class="col-6">
+            {{names[artists]}}
+        </div>
+    </div>
+    {% set count = count + 1 %}
+    {% endfor %}
+</div>
 
-    <div class = "list-container">
+    <!-- <div class = "list-container">
         <ol>
             {% for artists in range(0,10) %}
             <li>  {{names[artists]}} <img src = "{{pictures[artists]}}" alt = "picture of {{names[artists]}}"> </li>
@@ -15,4 +32,4 @@
         </ol>
     </div>
     
-{% endblock %}
+{% endblock %} -->
