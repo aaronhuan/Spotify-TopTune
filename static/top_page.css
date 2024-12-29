@@ -17,6 +17,8 @@ ol> li{
     color:#A89A8E;
 }
 
-/* .container{
-    background-image:url(./.jpg);
-} */
+ .container{
+    background-image:url("./pexels-karolina-grabowska-4814061.jpg");
+    max-width: 50% !important;
+    padding:20px;
+} 
