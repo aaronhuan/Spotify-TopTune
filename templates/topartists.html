@@ -3,24 +3,23 @@
 
 {% block body %}
 <header>
-    <h1>You're top artists are:</h1>    
+    <h1 class="title">Your top artists are:</h1>    
 </header>
 
 <div class = "container">
     {% set count=1 %}
     {% for artists in range(0,10) %}
-    <div class = "row">
-        <div class = "col-1">
-            {{count}}
+    <div class = "row justify-content-center">
+        <div class = "col-1 pt-3 m-0 text-left" style="color: #FFFFFF;">
+            {{ loop.index }}
         </div>
-        <div class="col-5">
+        <div class="col-1 pt-2 m-0">
             <img src="{{pictures[artists]}}" alt = "picture of {{names[artists]}}">
         </div>
-        <div class="col-6">
+        <div class="col-2 pt-3 m-0" style="color: #D4A017">
             {{names[artists]}}
         </div>
     </div>
-    {% set count = count + 1 %}
     {% endfor %}
 </div>
 
