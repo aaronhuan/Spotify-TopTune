@@ -2,28 +2,30 @@
 {% block header %} <link rel="stylesheet" href="../static/top_page.css"/>  {% endblock%}
 
 {% block body %}
-<header>
-    <h1 class="title">Your top artists are:</h1>    
-</header>
+<div id="capture">
+    <header>
+        <h1 class="title">Your top artists are:</h1>    
+    </header>
 
-<div class = "container mt-3">
-    {% set count=1 %}
-    {% for artists in range(0,10) %}
-    <div class = "row justify-content-center m-0">
-        <div class = "col-1 pt-3 m-0 text-left" style="color: #FFFFFF;">
-            {{ loop.index }}
+    <div class = "container mt-3">
+        {% set count=1 %}
+        {% for artists in range(0,10) %}
+        <div class = "row justify-content-center m-0">
+            <div class = "col-1 pt-3 m-0 text-left" style="color: #FFFFFF;">
+                {{ loop.index }}
+            </div>
+            <div class="col-1 pt-2 m-0">
+                <img src="{{pictures[artists]}}" alt = "picture of {{names[artists]}}">
+            </div>
+            <div class="col-2 pt-3 m-0" style="color: #D4A017">
+                {{names[artists]}}
+            </div>
         </div>
-        <div class="col-1 pt-2 m-0">
-            <img src="{{pictures[artists]}}" alt = "picture of {{names[artists]}}">
-        </div>
-        <div class="col-2 pt-3 m-0" style="color: #D4A017">
-            {{names[artists]}}
-        </div>
+        {% endfor %}
+        <a href="#" id="downloadBtn" class="btn btn-outline-warning">Download</a>
     </div>
-    {% endfor %}
-    <a href="#" class="btn btn-outline-warning">Download</a>
+    
 </div>
-
     <!-- <div class = "list-container">
         <ol>
             {% for artists in range(0,10) %}
