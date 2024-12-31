@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- <script src="../node_modules/html2canvas/dist/html2canvas.min.js"></script> -->
 </head>
 
 <body class = "montserrat-medium">
@@ -31,13 +32,8 @@
         </header> {% endblock%}
     {% block body %}{% endblock %}
     <script src = "../static/script.js"></script>
-    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="../node_modules/html2canvas/dist/html2canvas.min.js"></script>
-    <script>
-        document.querySelector('#downloadBtn').addEventListener('click', function(){
-            html2canvas
-        })
-    </script>
+    <script src="../static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
