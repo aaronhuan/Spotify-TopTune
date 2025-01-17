@@ -8,7 +8,24 @@
         </header>
         
         <div class = "container mt-3">
-
+            {% for song in range(0,10) %}
+            {% set min, sec = length[song] %}
+            <div class = "row justify-content-center m-0">
+                <div class = "col-2 col-sm-1 pt-3 m-0 text-left" style="color: #FFFFFF;">
+                    {{ loop.index }}
+                </div>
+                <div class="col-4 col-sm-2 pt-2 m-0">
+                    <img src="{{image_list[song]}}" alt = "album image containing {{song_list[song]}}">
+                </div>
+                <div class="col-6 col-sm-3 pt-3 m-0" style="color: #D4A017">
+                    {{song_list[song]}} 
+                </div>
+                <div class="col-3 col sm 2 pt-3 m-0" style="color: #D4A017">
+                    0:00 - {{min}}:{{sec}}
+                </div> 
+            </div>
+            {% endfor %}
+            <a href="#" id="downloadBtn" class="btn btn-outline-warning">Download</a>
         </div>
     </div>
 
@@ -21,21 +38,5 @@
         {% endfor %}
     </ol> -->
 
-    <!-- 
-        <div class = "row justify-content-center m-0">
-            <div class = "col-2 col-sm-1 pt-3 m-0 text-left" style="color: #FFFFFF;">
-                {{ loop.index }}
-            </div>
-            <div class="col-4 col-sm-2 pt-2 m-0">
-                <img src="{{pictures[artists]}}" alt = "picture of {{names[artists]}}">
-            </div>
-            <div class="col-6 col-sm-3 pt-3 m-0" style="color: #D4A017">
-                {{names[artists]}}
-            </div>
-        </div>
-        {% endfor %}
-        <a href="#" id="downloadBtn" class="btn btn-outline-warning">Download</a>
-    </div>
-    
-</div> -->
+
 {% endblock %}
