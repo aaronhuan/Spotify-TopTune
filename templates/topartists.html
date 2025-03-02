@@ -10,13 +10,13 @@
     <div class = "container mt-3">
         {% for artists in range(0,10) %}
         <div class = "row justify-content-center m-0">
-            <div class = "col-2 col-sm-1 pt-3 m-0 text-left" style="color: #FFFFFF;">
+            <div class = "col-2 col-sm-1 pt-2 text-left" style="color: #FFFFFF;">
                 {{ loop.index }}
             </div>
-            <div class="col-4 col-sm-2 pt-2 m-0">
+            <div class="col-4 col-sm-2 pt-2 ">
                 <img src="{{pictures[artists]}}" alt = "picture of {{names[artists]}}">
             </div>
-            <div class="col-6 col-sm-3 pt-3 m-0" style="color: #D4A017">
+            <div class="col-6 col-sm-3 pt-2 align-items-center " style="color: #D4A017">
                 {{names[artists]}}
             </div>
         </div>

@@ -20,5 +20,10 @@ ol> li{
  .container{
     background-image:url("./pexels-karolina-grabowska-4814061.jpg");
     max-width: 50% !important;
+    margin: auto;
     padding:20px;
 } 
+
+.row div {
+    padding: 5px 0; /* Ensures text doesn't push upwards */
+}

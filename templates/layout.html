@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello</title>
-    {% block header%}  <link rel="stylesheet" href="../static/main.css"> {% endblock %}
+    {% block header%}  
+        <!-- bootstrap css -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
+     
+    <link rel="stylesheet" href="../static/main.css"> {% endblock %}
     <!-- default css page -->
      
-    <!-- bootstrap css -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
-     
+
     <!-- google font api -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
