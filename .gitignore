@@ -15,3 +15,4 @@ debug.log
 *.pyo
 .DS_Store  # macOS
 Thumbs.db   # Windows
+.vercel

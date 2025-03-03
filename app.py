@@ -17,16 +17,16 @@ import time
 import math
 import os 
 from dotenv import load_dotenv
-load_dotenv()
+load_dotenv("config.env")
 CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
 CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
-REDIRECT_URI = os.getenv("SPOTIPY_REDIRECT_URI")
 
 #https://developer.spotify.com/documentation/web-api/concepts/scopes
 scopes_used = "user-library-read user-read-private playlist-modify-public playlist-modify-private user-top-read user-read-recently-played"
 #scopes for reading, modify playlists  
 
 app =Flask(__name__) #creates the flask application
+
 app.secret_key= "hbadkjsJHBHJKB#QLSDSAD"  #the cookie 
 app.config["SESSION_COOKIE_NAME"]= "aarons Cookie" #stores the user's session
 TOKEN_INFO = "token_info"
@@ -40,6 +40,7 @@ def index():
     else:
         # not logged in 
         return render_template("homepage_ul.html")
+
 
 @app.route("/login")
 def login(): # log u into spotify 
