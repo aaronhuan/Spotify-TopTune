@@ -17,6 +17,8 @@ import time
 import math
 import os 
 from dotenv import load_dotenv
+from flask_session import Session
+
 load_dotenv("config.env")
 CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
 CLIENT_SECRET = os.getenv("SPOTIPY_CLIENT_SECRET")
@@ -26,9 +28,15 @@ scopes_used = "user-library-read user-read-private playlist-modify-public playli
 #scopes for reading, modify playlists  
 
 app =Flask(__name__) #creates the flask application
+app.config['SESSION_TYPE'] = 'filesystem'  
+app.config['SESSION_FILE_DIR'] = './flask_session/'
 
 app.secret_key= "hbadkjsJHBHJKB#QLSDSAD"  #the cookie 
-app.config["SESSION_COOKIE_NAME"]= "aarons_Cookie" #stores the user's session
+
+Session(app)
+
+
+# app.config["SESSION_COOKIE_NAME"]= "aarons_Cookie" #stores the user's session
 TOKEN_INFO = "token_info"
 
 @app.route("/") #routes but also referred to as endpoints 
@@ -118,6 +126,13 @@ def create_spotifyOuth() : #everytime use object use a new one
                                                 client_secret=CLIENT_SECRET,
                                                 redirect_uri=url_for("redirectPage", _external=True), #url_for is a good way to not hardcode the path _external=True will create an absolute path
                                                 scope=scopes_used)
+@app.after_request
+def add_no_cache_headers(response):
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
 '''
 scopes_used = "user-library-read playlist-modify-public playlist-modify-private user-top-read user-read-recently-played"
 #scopes for reading, modify playlists
