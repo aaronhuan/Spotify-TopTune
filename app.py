@@ -18,6 +18,20 @@ import math
 import os 
 from dotenv import load_dotenv
 from flask_session import Session
+from spotipy.cache_handler import CacheHandler
+class FlaskSessionCacheHandler(CacheHandler):
+    def __init__(self, session_key):
+        self.session_key = session_key
+
+    def get_cached_token(self):
+        return session.get(self.session_key, None)
+
+    def save_token_to_cache(self, token_info):
+        session[self.session_key] = token_info
+
+    def delete_token_cache(self):
+        session.pop(self.session_key, None)
+
 
 load_dotenv("config.env")
 CLIENT_ID = os.getenv("SPOTIPY_CLIENT_ID")
@@ -38,7 +52,11 @@ Session(app)
 
 # app.config["SESSION_COOKIE_NAME"]= "aarons_Cookie" #stores the user's session
 TOKEN_INFO = "token_info"
-
+@app.before_request
+def log_session_token():
+    token = session.get(TOKEN_INFO)
+    print(f"Session token snippet: {str(token)[:40]}")
+    
 @app.route("/") #routes but also referred to as endpoints 
 def index():
     token_info = session.get(TOKEN_INFO, None)
@@ -121,11 +139,17 @@ def get_token(): #to refresh token and check if theres even a token
         session[TOKEN_INFO]=token_info
     return token_info
 
-def create_spotifyOuth() : #everytime use object use a new one
-    return SpotifyOAuth(client_id =CLIENT_ID,
-                                                client_secret=CLIENT_SECRET,
-                                                redirect_uri=url_for("redirectPage", _external=True), #url_for is a good way to not hardcode the path _external=True will create an absolute path
-                                                scope=scopes_used)
+def create_spotifyOuth():
+    cache_handler = FlaskSessionCacheHandler(TOKEN_INFO)
+    return SpotifyOAuth(
+        client_id=CLIENT_ID,
+        client_secret=CLIENT_SECRET,
+        redirect_uri=url_for("redirectPage", _external=True),
+        scope=scopes_used,
+        cache_handler=cache_handler,
+        show_dialog=True
+    )
+
 @app.after_request
 def add_no_cache_headers(response):
     response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
