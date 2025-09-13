@@ -28,7 +28,7 @@ scopes_used = "user-library-read user-read-private playlist-modify-public playli
 app =Flask(__name__) #creates the flask application
 
 app.secret_key= "hbadkjsJHBHJKB#QLSDSAD"  #the cookie 
-app.config["SESSION_COOKIE_NAME"]= "aarons Cookie" #stores the user's session
+app.config["SESSION_COOKIE_NAME"]= "aarons_Cookie" #stores the user's session
 TOKEN_INFO = "token_info"
 
 @app.route("/") #routes but also referred to as endpoints 
