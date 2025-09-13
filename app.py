@@ -31,15 +31,19 @@ app.secret_key= "hbadkjsJHBHJKB#QLSDSAD"  #the cookie
 app.config["SESSION_COOKIE_NAME"]= "aarons Cookie" #stores the user's session
 TOKEN_INFO = "token_info"
 
-@app.route("/") #routes but also referred to as endpoints 
+@app.route("/")
 def index():
-    token_info = session.get(TOKEN_INFO, None)
-    if token_info: 
-        # if logged in b/c we have token 
-        return render_template("homepage_l.html")
-    else:
-        # not logged in 
-        return render_template("homepage_ul.html")
+    return "Hello from Flask! The app is working."
+
+# @app.route("/") #routes but also referred to as endpoints 
+# def index():
+#     token_info = session.get(TOKEN_INFO, None)
+#     if token_info: 
+#         # if logged in b/c we have token 
+#         return render_template("homepage_l.html")
+#     else:
+#         # not logged in 
+#         return render_template("homepage_ul.html")
 
 
 @app.route("/login")
