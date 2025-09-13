@@ -67,7 +67,7 @@ def topTracks():
         token_info = get_token()
     except: 
         print("user not logged in")
-        redirect(url_for("login", _external= False)) #return user to login page
+        return redirect(url_for("login", _external= False)) #return user to login page
 
     sp=spotipy.Spotify(auth=token_info['access_token'])
     top_tracks = (sp.current_user_top_tracks(limit=10, offset=0))
@@ -92,7 +92,7 @@ def topArtists():
         token_info = get_token()
     except: 
         print("user not logged in")
-        redirect(url_for("login", _external= False)) #return user to login page
+        return redirect(url_for("login", _external= False)) #return user to login page
 
     sp=spotipy.Spotify(auth=token_info['access_token'])
     top_artists = (sp.current_user_top_artists(limit=10, offset=0))
